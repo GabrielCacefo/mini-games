@@ -1,0 +1,142 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #252a34;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: white;
+}
+
+.memory-game {
+    width: 100%;
+    max-width: 80%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 12px;
+    perspective: 1200px;
+}
+
+.memory-card {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+    cursor: pointer;
+}
+
+.memory-card.flip {
+    transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.front-face {
+    transform: rotateY(180deg);
+}
+
+.front-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.back-face {
+    background: #15151e url('assets/Fundo.png') no-repeat center center;
+    background-size: 110%;
+    border: 3px solid #e10600;
+}
+
+#restart-btn {
+    margin-top: 25px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #ce2eff;
+    color: white;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none;
+}
+
+a {
+    margin-top: 25px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #ce2eff;
+    color: white;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #0816d9;
+    transform: scale(1.05);
+}
+
+#restart-btn:hover {
+    background-color: #0816d9;
+    transform: scale(1.05);
+}
+
+@media (max-width: 700px) {
+    .memory-game {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    .game-info {
+        font-size: 1em;
+    }
+
+    .memory-game {
+        gap: 8px;
+    }
+}
